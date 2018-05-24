@@ -107,7 +107,7 @@ I’ve spent some time discussing change as an inherent property of an open sour
 
 ---
 
-**Let’s start with [`bitflags`], a very widely depended on library that needs a new home. Reach out [here][bitflags-maintainer] if you're interested in shepherding and/or maintaining `bitflags`.**
+**Let’s start with [`bitflags`], a very widely depended on library that needs a new home. Reach out [here][bitflags-maintainer] if you're interested in shepherding and/or maintaining `bitflags`.** Note that `bitflags` has already been through a library evaluation and stabilized. As such a fundamental crate, on-going stability and compatibility is really important but there's still scope for new features and docs to make working with flags better.
 
 **Do you have a library you think needs more support growing its maintainership? Reach out [here][other-libs] if you've got any thoughts.**
 
