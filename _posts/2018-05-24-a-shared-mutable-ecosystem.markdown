@@ -20,7 +20,7 @@ These assumptions don’t align with reality. Something that happens in open sou
 
 We don't want people to burn out or feel like the waves of enthusiasm that help their creations set sail eventually also scuttle them on sharp rocks.
 
-We want to help consumers of Rust libraries understand the dynamics of its open source ecosystem. We want to help maintainers of Rust libraries feel confident in their personal involvement and the capacity of the ecosystem to absorb change.
+We want to help consumers of Rust libraries understand the dynamics of its open source ecosystem and what it means to use software provided _as-is_. We want to help maintainers of Rust libraries feel confident in their personal involvement and the capacity of the ecosystem to absorb change.
 
 We want to help libraries in the Rust ecosystem mature their maintainership. We want to create a shared, mutable ecosystem by distributing ownership, trust and collaboration. Taking time out from swathes of open source should feel natural, rather than a last-ditch effort to claw back sanity.
 
@@ -119,9 +119,12 @@ There’s not a lot that’s novel in this post or process. Maintainers have bee
 
 One of the goals of describing this process is so that other folks can take and adapt it to suit their own needs. There’s a lot here we should talk about more. There’s no one-size-fits-all approach. I’d love to hear from our maintainers, contributors, and users in the community! Let’s all work towards a mature and sustainable ecosystem.
 
+[Discuss on reddit][reddit-post]
+
 [`bitflags`]: https://crates.io/crates/bitflags
 [bitflags-maintainer]: https://github.com/rust-lang-nursery/ecosystem-wg/issues/2
 [ecosystem-wg-issues]: https://github.com/rust-lang-nursery/ecosystem-wg/issues
 [other-libs]: https://github.com/rust-lang-nursery/ecosystem-wg/issues/11
 [libz blitz]: https://blog.rust-lang.org/2017/05/05/libz-blitz.html
 [Ecosystem Working Group]: https://github.com/rust-lang-nursery/ecosystem-wg
+[reddit-post]: https://www.reddit.com/r/rust/comments/8lwvc0/a_shared_mutable_ecosystem_ft_help_maintain/
