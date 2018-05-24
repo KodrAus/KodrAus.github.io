@@ -1,0 +1,11 @@
+title: Some words
+author: Ashley Mannix
+description: >-
+  About Rust and open source.
+baseurl: ""
+url: ""
+twitter_username: KodrAus
+github_username:  KodrAus
+
+markdown: kramdown
+theme: minima
