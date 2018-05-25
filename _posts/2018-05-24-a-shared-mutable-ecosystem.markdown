@@ -109,7 +109,7 @@ I’ve spent some time discussing change as an inherent property of an open sour
 
 **Let’s start with [`bitflags`], a very widely depended on library that needs a new home. Reach out [here][bitflags-maintainer] if you're interested in shepherding and/or maintaining `bitflags`.** Note that `bitflags` has already been through a library evaluation and stabilized. As such a fundamental crate, on-going stability and compatibility is really important but there's still scope for new features and docs to make working with flags better.
 
-**Do you have a library you think needs more support growing its maintainership? Reach out [here][other-libs] if you've got any thoughts.**
+**Do you have a library you think needs more support growing its maintainership? Open a GitHub issue [here][other-libs] if you've got any thoughts.**
 
 **Also see the [open set of issues][ecosystem-wg-issues] and leave your thoughts on anything there or open new issues for other ideas.**
 
@@ -124,7 +124,7 @@ One of the goals of describing this process is so that other folks can take and 
 [`bitflags`]: https://crates.io/crates/bitflags
 [bitflags-maintainer]: https://github.com/rust-lang-nursery/ecosystem-wg/issues/2
 [ecosystem-wg-issues]: https://github.com/rust-lang-nursery/ecosystem-wg/issues
-[other-libs]: https://github.com/rust-lang-nursery/ecosystem-wg/issues/11
+[other-libs]: https://github.com/rust-lang-nursery/ecosystem-wg/issues
 [libz blitz]: https://blog.rust-lang.org/2017/05/05/libz-blitz.html
 [Ecosystem Working Group]: https://github.com/rust-lang-nursery/ecosystem-wg
 [reddit-post]: https://www.reddit.com/r/rust/comments/8lwvc0/a_shared_mutable_ecosystem_ft_help_maintain/
