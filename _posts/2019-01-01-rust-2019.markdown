@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Rust in 2019"
+date: 2019-01-01 12:44:00 +1000
+categories: rust
+---
+These are some rough notes on things in the Rust project that are important to me, that I'd like to work on in 2019. I haven't got a grand vision this time around (I tried that last year, but ran out of bandwidth to properly drive it).
+
+## In the nursery
+
+This year I'd like to focus on the remaining libraries in the nursery that don't have an obvious direction yet:
+
+- Land structured logging support in the `log` crate so it's more broadly useful and compatible.
+- Work out what we want to do with the `glob` crate.
+- Work out what we want to do with the `getopts` crate.
+- Work out where we want to put the `lazy-static` crate. That one's interesting because `lazy-static` is pretty fundamental, but the implementation we have now has some API edges that trip people up, and newer language features make more of what `lazy-static` does possible without it.
+
+What I think we really need in the nursery is some more visibility into what's in there, who's invested in it, and what its purpose is. We do tend to have that for the more recent additions.
+
+## In the wider ecosystem
+
+There are a few viral issues I've been running into over the last few years when working on libraries that I think we should try resolve in 2019:
+
+- Minimal versions. Right now we've got an ad-hoc scheme for describing minimal versions that isn't very effective.
+- Cargo features. Right now we're a bit limited in how Cargo features can be described in dependencies. This becomes challenging when attempting to glue libraries together, especially as stable libraries are leaning more on features. It's also a challenge for wiring up viral features that apply arbitrarily, like optional `std` or `wasm` support. Our current tools for doing this seem a bit brittle.
+
+Each of these issues has been discussed and had RFCs proposed in the past. I think they deserve another round of discussion.
