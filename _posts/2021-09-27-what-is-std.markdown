@@ -36,7 +36,7 @@ Let's go back to the standard library's self-proclaimed definition. It tells us 
 
 So, what the standard libary _is_ is the foundational, portable, minimal, shared abstractions available by default to all Rust programs. What are some of these abstractions? Let's look at a few:
 
-We've got the [**`Sync` trait**](https://doc.rust-lang.org/1.55.0/std/marker/trait.Sync.html). It's what's called a _marker interface_ that tells the Rust compiler something about the type that implements it. In this case, implementing `Sync` tells the compiler that a type is safe to access concurrently.
+We've got the [**`Sync` trait**](https://doc.rust-lang.org/1.55.0/std/marker/trait.Sync.html). It's what's called a _marker interface_ that tells the Rust compiler something about the type that implements it. In this case, implementing `Sync` tells the compiler that a type is safe to access concurrently. There's another trait called `Send` that plays into this as well, but for this exercise we're just going to keep things simple and ignore it.
 
 We've got the [**`Arc<T>` type**](https://doc.rust-lang.org/1.55.0/std/sync/struct.Arc.html). It lets you take any `T` and share any number of independent references to it. When the last reference is dropped then `T` is too. If that `T` is thread-safe (implements `Sync`) then you can create cheap references through the `Arc` and send them to other threads.
 
