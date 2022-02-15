@@ -74,4 +74,4 @@ pub fn dyn_trait(i: Wrapper);
 
 It's not that `dyn Trait` is bad, just that it's quirky. To me, it feels a lot like `struct`s in .NET used to (and still do sometimes). They're not a foundational tool. They're a niche tool for solving a niche problem. There's nothing wrong with that, but they give a glimpse of much greater untapped potential. If only we could iron out a few of the quirks. For `dyn Trait` at least, there is active and ongoing work in that area.
 
-I for one am super excited for that future Rust with even just a few less quirks.
+It's also not even that quirks themselves are bad. In some sense these gaps you find in Rust that need filling in are a positive sign of its methodical march forwards. I for one though am super excited for that future Rust with even just a few less quirks.
