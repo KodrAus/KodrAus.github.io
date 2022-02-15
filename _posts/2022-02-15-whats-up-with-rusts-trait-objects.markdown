@@ -30,7 +30,7 @@ That doesn't actually compile though. In order to cast to a `dyn Trait` you need
 
 Since trait objects are themselves unsized you need to pass them using a suitable container. Since containers tend to carry ownership semantics with them you now need to make additional decisions on behalf of your callers. That's why our example `dyn_trait` accepts `&dyn Input` instead of just `dyn Input`, and produces `Box<dyn Output>` instead of just `dyn Output`. It's also why the issue with casting `str` is so significant. That `'a` lifetime might be _really_ important, and not being able to retain it could bring your whole lifetime sandcastle crashing down.
 
-While we're also looking at `impl Trait`, another quirk is comes from adding additional bounds to a `dyn Trait`. With `impl Trait` you could write:
+While we're also looking at `impl Trait`, another quirk comes from adding additional bounds to a `dyn Trait`. With `impl Trait` you could write:
 
 ```rust
 fn impl_trait(i: impl Input + Debug) -> impl Output {}
