@@ -48,7 +48,7 @@ There are others around `impl Trait` and `dyn Trait` specifically (leaking of au
 
 ```rust
 trait ObjectSafe {
-    fn by_mut(&mut self);
+    fn by_mut(&mut self, v: i32);
 }
 ```
 
@@ -56,11 +56,13 @@ But this is not:
 
 ```rust
 trait NotObjectSafe {
-    fn by_value(self);
+    fn by_value<T>(&mut self, v: %);
 }
 ```
 
-Generics on functions are also not allowed, and any generics and associated types need to be specified as part of the `dyn Trait` type. Further restrictions are still incoming with `async`/`await`.
+> Note: a previous version of this example used `&self` vs `self`, but this example with generics is more direct.
+
+Further restrictions are still incoming with `async`/`await` support in traits.
 
 These quirks all taken together always make me nervous about exposing `dyn Trait` directly in public APIs. They feel too raw, too opinionated, too... quirky. So I always end up wrapping the `dyn Trait` in a newtype to try keep some wiggle room:
 
