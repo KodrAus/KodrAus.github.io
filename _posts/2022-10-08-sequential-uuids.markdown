@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sortable identifiers in `uuid`"
-date: 2022-10-08 14:10:00 +1000
+date: 2022-10-08 14:00:00 +1000
 categories: rust
 ---
 Before diving in, I'd like to give a huge thank you to [@rrichardson](https://github.com/rrichardson) who implemented the new functionality this post talks about.
