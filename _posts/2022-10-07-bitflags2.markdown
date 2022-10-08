@@ -4,7 +4,7 @@ title: "Bitflags 2.0.0-rc.1"
 date: 2022-10-07 14:10:00 +1000
 categories: rust
 ---
-Today we're publishing a release candidate for a new major 2.x of the `bitflags` crate. Before digging into some details, I wanted to give a huge thanks to [@arturoc](https://github.com/arturoc) who added the `BitFlags` trait and iterator support, and to [@konsumlamm](https://github.com/konsumlamm) who helped modernize the library and cleaned a lot of things up across the board.
+Today we're publishing a release candidate for a new major 2.x of [the `bitflags` crate](https://github.com/bitflags/bitflags). Before digging into some details, I wanted to give a huge thanks to [@arturoc](https://github.com/arturoc) who added the `BitFlags` trait and iterator support, and to [@konsumlamm](https://github.com/konsumlamm) who helped modernize the library and cleaned a lot of things up across the board.
 
 ## The `BitFlags` trait
 
