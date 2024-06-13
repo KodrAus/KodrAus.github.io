@@ -58,11 +58,56 @@ When run, the above program will output something like this:
 
 ![The output of the previous program: "Hello, user id 'rustlang', name 'Rust'. 389 microsecond span: issue greeting to 'rustlang'."](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/master/assets/2024-06-13-introducing-emit-console-output.png)
 
+`emit` isn't just for pretty console output. It uses the same plugin approach as other diagnostics frameworks to support emitting diagnostics [to rolling files](https://docs.rs/emit_file/0.11.0-alpha.4/emit_file/index.html), [to an OTLP (OpenTelemetry compatible) collector](https://docs.rs/emit_otlp/0.11.0-alpha.4/emit_otlp/index.html), or anywhere else you might want. Here's how the example changes if I want to add OTLP support:
+
+```toml
+[dependencies.emit_otlp]
+version = "0.11.0-alpha.4"
+```
+
+```rust
+fn main() {
+    let rt = emit::setup()
+        .emit_to(emit_term::stdout())
+        .and_emit_to(emit_otlp::new()
+            .resource(emit::props! {
+                #[emit::key("service.name")]
+                service_name: "emit_demo"
+            })
+            .logs(emit_otlp::logs_grpc_proto("http://localhost:4319")
+                .body(|event, f| {
+                    write!(f, "{}", event.tpl().render(emit::Empty).braced())
+                })
+            )
+            .traces(emit_otlp::traces_grpc_proto("http://localhost:4319")
+                .name(|event, f| {
+                    write!(f, "{}", event.tpl().render(emit::Empty).braced())
+                })
+            )
+            .metrics(emit_otlp::metrics_grpc_proto("http://localhost:4319"))
+            .spawn()
+            .unwrap()
+        )
+        .init();
+
+    greet(&User {
+        id: "rustlang",
+        name: "Rust",
+    });
+
+    rt.blocking_flush(Duration::from_secs(5));
+}
+```
+
+Sending that OTLP output to [Seq](https://datalust.co/seq), the diagnostics product I build at work, looks something like this:
+
+![The output of the previous program in Seq, showing a trace with an event in it."](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/master/assets/2024-06-13-introducing-emit-seq-output.png)
+
 ## What makes `emit` different?
 
 `emit` makes full use of Rust's powerful metaprogramming features to offer an expressive and robust syntax for adding diagnostics to your applications. Its message templates serve a dual role of capturing ambient state into the diagnostic event, and providing a human-readable description of it. Message templates are parsed at compile time, but are rendered at runtime, which makes the colorized output in the previous example possible.
 
-`emit` supports fully structured data by inheriting the data model of fully fledged serialization frameworks, including [`serde`](https://serde.rs). You can capture arbitrarily complex values in a diagnostic event without losing their structure. In the previous example, you'll notice the colorization extends to the individual fields of the rendered value. `emit` isn't just a framework for writing logs to the console though. It uses the same plugin approach as other diagnostics frameworks to support emitting diagnostics [to rolling files](https://docs.rs/emit_file/0.11.0-alpha.4/emit_file/index.html), [to an OpenTelemetry compatible collector](https://docs.rs/emit_otlp/0.11.0-alpha.4/emit_otlp/index.html), or anywhere else you might want.
+`emit` supports fully structured data by inheriting the data model of fully fledged serialization frameworks, including [`serde`](https://serde.rs). You can capture arbitrarily complex values in a diagnostic event without losing their structure. In the previous example, you'll notice the colorization extends to the individual fields of the rendered value. 
 
 Despite its heavy use of metaprogramming, I've tried to ensure `emit`'s APIs are all usable outside of its macros too. I'm not a fan of APIs that you can't use without companion macros so have kept everything grounded in regular Rust types.
 
@@ -70,7 +115,7 @@ Despite its heavy use of metaprogramming, I've tried to ensure `emit`'s APIs are
 
 `emit` is not trying to be a replacement for the [`log`](https://docs.rs/log/latest/log/) or [`tracing`](https://docs.rs/tracing/latest/tracing/) projects. As a high-level systems language, Rust is used in many environments, each with its own microcosm of supporting libraries and tooling serving the niche requirements of its community. There's much less winner-takes-all campaigning because there can't ever be a single solution that perfectly serves all users and there's no strong overarching authority to impose one anyway.
 
-The `log` library is intentionally minimal. It has a few built-in pieces of metadata that are reminiscent of traditional log lines, but is otherwise mostly a configurable `println!`. That's a very appealing property to some users who want to minimise the outside code they depend on. `emit` is not a zero-dependency framework and is not going to be appealing to these users.
+The `log` library is intentionally minimal. It has a few built-in pieces of metadata that are reminiscent of traditional log lines, but is otherwise mostly a configurable `println!`. That's a very appealing property to some users who want to minimize the outside code they depend on. `emit` is not a zero-dependency framework and is not going to be appealing to these users.
 
 The `tracing` library is really well suited to fine-grained diagnostics in high-throughput applications. If you have a complex, asynchronous, performance sensitive application with a lot of moving parts you need to make sense of then `tracing` is probably what you need. `emit` is not intended for these kinds of applications and is likely to introduce too much overhead.
 
