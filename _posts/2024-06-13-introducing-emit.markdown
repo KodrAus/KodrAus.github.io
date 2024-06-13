@@ -5,7 +5,7 @@ date: 2024-06-13 14:00:00 +1000
 categories: rust
 ---
 
-<img src="https://raw.githubusercontent.com/emit-rs/emit/v0.11.0-alpha.4/asset/logo-with-text.svg" alt="The emit logo" width="150" height="150" style="display: block; margin: 0 auto" />
+<img src="https://raw.githubusercontent.com/emit-rs/emit/v0.11.0-alpha.5/asset/logo-with-text.svg" alt="The emit logo" width="150" height="150" style="display: block; margin: 0 auto" />
 
 I'm excited to start talking more widely about a project I've been working on for the last few years. It's a framework for adding diagnostics to Rust applications called [`emit`](https://github.com/emit-rs/emit). You can use `emit` to pepper your code with logs, to trace key operations, to surface metric samples, and to produce whatever other kind of diagnostic data you'd like. Its data model is not based on OpenTelemetry. Everything is represented as an _event_; a time-oriented bag of data described by a message template. That's enough to build higher-level concepts like traditional log records, spans in a distributed trace, or aggregated samples from some data source over the top. `emit`'s simplified data model doesn't make it a low-level diagnostics toolkit. It's built to offer the right level of abstraction and fidelity for developers of web and CLI applications.
 
@@ -17,11 +17,11 @@ You add the base `emit` library to your `Cargo.toml`, along with somewhere to em
 
 ```toml
 [dependencies.emit]
-version = "0.11.0-alpha.4"
+version = "0.11.0-alpha.5"
 features = ["serde"]
 
 [dependencies.emit_term]
-version = "0.11.0-alpha.4"
+version = "0.11.0-alpha.5"
 ```
 
 You use `emit::setup()` to initialize the framework. The `#[emit::span]` macro traces the execution of a function, correlating any diagnostics emitted within it. The `emit::info!` macro emits a diagnostic event, capturing any referenced state from its environment:
@@ -58,11 +58,11 @@ When run, the above program will output something like this:
 
 ![The output of the previous program: "Hello, user id 'rustlang', name 'Rust'. 389 microsecond span: issue greeting to 'rustlang'."](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/master/assets/2024-06-13-introducing-emit-console-output.png)
 
-`emit` isn't just for pretty console output. It uses the same plugin approach as other diagnostics frameworks to support emitting diagnostics [to rolling files](https://docs.rs/emit_file/0.11.0-alpha.4/emit_file/index.html), [to an OTLP (OpenTelemetry compatible) collector](https://docs.rs/emit_otlp/0.11.0-alpha.4/emit_otlp/index.html), or anywhere else you might want. Here's how the example changes if I want to add OTLP support:
+`emit` isn't just for pretty console output. It uses the same plugin approach as other diagnostics frameworks to support emitting diagnostics [to rolling files](https://docs.rs/emit_file/0.11.0-alpha.5/emit_file/index.html), [to an OTLP (OpenTelemetry compatible) collector](https://docs.rs/emit_otlp/0.11.0-alpha.5/emit_otlp/index.html), or anywhere else you might want. Here's how the example changes if I want to add OTLP support:
 
 ```toml
 [dependencies.emit_otlp]
-version = "0.11.0-alpha.4"
+version = "0.11.0-alpha.5"
 ```
 
 ```rust
@@ -75,14 +75,10 @@ fn main() {
                 service_name: "emit_demo"
             })
             .logs(emit_otlp::logs_grpc_proto("http://localhost:4319")
-                .body(|event, f| {
-                    write!(f, "{}", event.tpl().render(emit::Empty).braced())
-                })
+                .body(|event, f| write!(f, "{}", event.tpl()))
             )
             .traces(emit_otlp::traces_grpc_proto("http://localhost:4319")
-                .name(|event, f| {
-                    write!(f, "{}", event.tpl().render(emit::Empty).braced())
-                })
+                .name(|event, f| write!(f, "{}", event.tpl()))
             )
             .metrics(emit_otlp::metrics_grpc_proto("http://localhost:4319"))
             .spawn()
