@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "`emit`: Developer-first diagnostics for Rust applications"
+title: "Developer-first diagnostics for Rust applications"
 date: 2024-06-13 14:00:00 +1000
 categories: rust
 ---
 
-<img src="https://raw.githubusercontent.com/emit-rs/emit/v0.11.0-alpha.4/asset/logo-with-text.svg" alt="The emit logo" width="150" height="150" />
+<img src="https://raw.githubusercontent.com/emit-rs/emit/v0.11.0-alpha.4/asset/logo-with-text.svg" alt="The emit logo" width="150" height="150" style="display: block; margin: 0 auto" />
 
 I'm excited to start talking more widely about a project I've been working on for the last few years. It's a framework for adding diagnostics to Rust applications called [`emit`](https://github.com/emit-rs/emit). You can use `emit` to pepper your code with logs, to trace key operations, to surface metric samples, and to produce whatever other kind of diagnostic data you'd like. Its data model is not based on OpenTelemetry. Everything is represented as an _event_; a time-oriented bag of data described by a message template. That's enough to build higher-level concepts like traditional log records, spans in a distributed trace, or aggregated samples from some data source over the top. `emit`'s simplified data model doesn't make it a low-level diagnostics toolkit. It's built to offer the right level of abstraction and fidelity for developers of web and CLI applications.
 
