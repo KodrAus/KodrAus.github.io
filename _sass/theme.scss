@@ -205,6 +205,19 @@ pre {
     }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    code, pre {
+       font-size: inherit;
+       background: none;
+       border: none;
+   }
+}
+
 .wrapper {
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
     max-width : calc(#{$content-width} - (#{$spacing-unit} * 2));
