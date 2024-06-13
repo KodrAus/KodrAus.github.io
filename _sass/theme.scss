@@ -322,7 +322,7 @@ table {
 }
 
 .post-title {
-    @include relative-font-size(4.5);
+    @include relative-font-size(3);
     letter-spacing: -1px;
     line-height: 0.8;
 
