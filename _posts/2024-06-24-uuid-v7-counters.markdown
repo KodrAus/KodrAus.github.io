@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "`uuid` now properly supports version 7 counters"
+title: "uuid now properly supports version 7 counters"
 date: 2024-06-24 14:00:00 +1000
 categories: rust
 ---
