@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Announcing emit 0.11"
+date: 2025-01-10 14:00:00 +1000
+categories: rust
+---
+
+<img src="https://raw.githubusercontent.com/emit-rs/emit/v0.11.0-alpha.5/asset/logo-with-text.svg" alt="The emit logo" width="150" height="150" style="display: block; margin: 0 auto" />
+
+Back in [August of last year](https://kodraus.github.io/rust/2024/06/13/introducing-emit.html) I announced [`emit`](https://github.com/emit-rs/emit): a framework for adding diagnostics (logs, traces, metrics) to Rust applications. That post outlines what `emit` is, why it exists, and where it fits into the landscape of options we have today.
+
+Since then I've been working hard on finalizing the APIs, fleshing out core functionality, and filling in documentation. We've been using it heavily in my workplace to add tracing to distributed queries in our database engine. Now, it's ready for you to use in your projects too.
+
+## The path to stabilization
+
+I'm treating this `0.11.x` series of `emit` as a release candidate for `1.0.0`. There aren't any breaking changes planned to the API unless there's something drastic that forces them. Stability is important, especially for diagnostics which end up peppered everywhere, so you should feel safe that depending on `emit` isn't going to cause you headaches later.
+
+## Getting started
+
+[The guide](https://emit-rs.io) is the best place to learn what `emit` is and how to use it. I've tried to make this resource as useful as possible for both getting started and for learning the ins-and-outs of the framework.
+
+Please also feel free to open issues or discussions on [the project's repository](https://github.com/emit-rs/emit) if you run into anything or have any questions!
