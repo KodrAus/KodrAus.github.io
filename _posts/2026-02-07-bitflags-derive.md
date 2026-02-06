@@ -5,7 +5,7 @@ date: 2026-02-07 09:00:00 +1000
 categories: rust
 ---
 
-I've been helping maintain the `bitflags` crate for a long time now. One of the first things I did when inheriting the library was release a `2.0` that tried to tighten up the internals a bit. The issue was mostly around how generated code behaved with `#[derive]`s. When you wrote:
+I've been helping maintain the [`bitflags`](https://github.com/bitflags/bitflags) crate for a long time now. One of the first things I did when inheriting the library was release a `2.0` that tried to tighten up the internals a bit. The issue was mostly around how generated code behaved with `#[derive]`s. When you wrote:
 
 ```rust
 bitflags! {
