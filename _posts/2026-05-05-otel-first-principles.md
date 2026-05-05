@@ -30,7 +30,7 @@ categories: opentelemetry
 
 **3:2**{: class="text-weak"} When events are high volume, or you're particularly interested in their frequency, you count their occurrence instead of emitting them directly. You sample the count at regular intervals, and emit that value as an event.
 
-**3:3**{: class="text-weak"} When compressing procedures that take time, you don't just want to know how many calls were made, you also want to know how long they took. You [divide the total count into buckets](https://en.wikipedia.org/wiki/Heat_map) by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
+**3:3**{: class="text-weak"} When sampling procedures that take time you don't just want to know how many calls were made, you also want to know how long they took. You [divide the total count into buckets](https://en.wikipedia.org/wiki/Heat_map) by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
 
 ![A heatmap chart showing the number of spans that completed within a given time bucket](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-heatmap-light.svg){: class="light-only"}
 ![A heatmap chart showing the number of spans that completed within a given time bucket](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-heatmap-dark.svg){: class="dark-only"}
