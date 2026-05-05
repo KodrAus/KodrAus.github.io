@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OpenTelemetry from first principles"
+title: "OpenTelemetry signals from first principles"
 date: 2026-05-05 09:00:00 +1000
 categories: opentelemetry
 ---
