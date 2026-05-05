@@ -27,7 +27,7 @@ categories: opentelemetry
 
 **3:2**{: class="section-number"} You compress high-volume events by counting their occurrence instead of logging them directly, making them both cheaper to produce, and to retain. You sample the count at regular intervals, just like continuous data streams.
 
-**3:3**{: class="section-number"} When compression procedures, you don't just want to know how many calls are made, you also want to know how long they took. You divide the total count into buckets by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
+**3:3**{: class="section-number"} When compressing procedures, you don't just want to know how many calls are made, you also want to know how long they took. You divide the total count into buckets by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
 
 ![A heatmap chart showing the number of spans that completed within a given time bucket](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-heatmap.svg)
 
