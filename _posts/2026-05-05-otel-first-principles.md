@@ -7,7 +7,7 @@ categories: opentelemetry
 
 **1:1**{: class="section-number"} When something notable happens in your system, you log an event for it. An event has a timestamp that tells you when it happened. It has a user-facing message that tells you what happened. It has contextual data that tells you where and why it happened.
 
-1:2 Some events are more important that others so you categorize them by their severity. Higher severity events can be distinguished from, and handled differently to, lower severity ones.
+**1:2**{: class="section-number"} Some events are more important that others so you categorize them by their severity. Higher severity events can be distinguished from, and handled differently to, lower severity ones.
 
 ![Three log events in a stream showing their timestamp, level, service, and message](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-logs.svg)
 
