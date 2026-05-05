@@ -5,9 +5,5 @@ description: >-
 baseurl: ""
 url: ""
 github_username:  KodrAus
-mastodon:
-- username: kodraus
-  instance: social.kodraus.com
 
 markdown: kramdown
-theme: minima
