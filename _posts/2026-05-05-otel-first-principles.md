@@ -14,7 +14,7 @@ categories: opentelemetry
 
 **2:1**{: class="text-weak"} Your system is organised into procedures, both logically, and mechanically. Procedures take time, and that's useful information, so you emit an event when they complete with both the time they started, and the time they ended. That span of time lets you calculate how long they took.
 
-**2:2**{: class="text-weak"} You want to correlate events emitted by the same procedure, so you add a shared identifier to them. Each invocation of a procedure is assigned a [unique identifier](https://opentelemetry.io/docs/concepts/context-propagation/). Procedures call eachother, so you organise their identifiers into a hierarchy. The caller becomes the parent, and callees become the children.
+**2:2**{: class="text-weak"} You want to correlate events emitted by the same procedure, so you add a [shared identifier](https://opentelemetry.io/docs/concepts/context-propagation/) to them. Each invocation of a procedure is assigned a unique identifier. Procedures call eachother, so you organise their identifiers into a hierarchy. The caller becomes the parent, and callees become the children.
 
 ![A trace of eight spans arranged in a tree showing their span ids and relative duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-light.svg){: class="light-only"}
 ![A trace of eight spans arranged in a tree showing their span ids and relative duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-dark.svg){: class="dark-only"}
