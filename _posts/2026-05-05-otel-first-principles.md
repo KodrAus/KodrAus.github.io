@@ -17,7 +17,7 @@ categories: opentelemetry
 
 ![A trace of eight spans arranged in a tree showing their span ids and relative duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace.svg)
 
-**2:3**{: class="section-number"} Your system makes inter-process calls that are logically part of the same procedure. You want these to be correlated too, so you include the caller's identifier as a header when making remote calls. The callee then uses it as if they were in-process with the caller.
+**2:3**{: class="section-number"} Your system makes inter-process calls that are logically part of the same procedure. You want these to be correlated too, so you include the caller's identifier as a header when making remote calls. The callee then reconstitutes it as if they were called directly in-process.
 
 **2:4**{: class="section-number"} Tracing procedures is expensive, both in production, and in retention. Instead of recording a trace for every procedure call, you retain a subset that sufficiently represents the whole set. You decide to trace a procedure upfront before its outer-most call, or you defer the decision to some later point when events from the trace are available. The decision to record a trace for a procedure is independent from the decision to retain other events they produce.
 
@@ -25,7 +25,7 @@ categories: opentelemetry
 
 ![A line chart showing the mean, min, and max together](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-chart.svg)
 
-**3:2**{: class="section-number"} You compress high-volume events by counting their occurrence instead of emitting them directly, making them both cheaper to produce, and to retain. You sample the count at regular intervals, just like continuous data streams.
+**3:2**{: class="section-number"} You compress events by counting their occurrence instead of emitting them directly, making them both cheaper to produce, and to retain. You sample the count at regular intervals, just like continuous data streams.
 
 **3:3**{: class="section-number"} When compressing procedures that take time, you don't just want to know how many calls were made, you also want to know how long they took. You divide the total count into buckets by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
 
@@ -33,4 +33,4 @@ categories: opentelemetry
 
 -----
 
-Good diagnostics compress and externalise the state of your systems with sufficient detail to understand and manage them from the outside. We've just covered the three main observability signals that make up OpenTelemetry; logs (1:x), traces (2:x), and metrics (3:x). I've presented them as a neat series of incremental progressions, but the real history isn't so serial. Each one has evolved to serve different needs at different times. Many systems today make use of all of these generic signals, plus others that may be more specialised. Over time, those specialisations that prove more broadly valuable find their way into the general toolkit, and the list grows.
+Good diagnostics compress and externalise the state of your systems with sufficient detail to understand and manage them from the outside. We've just covered the three main observability signals that make up OpenTelemetry; [logs](https://opentelemetry.io/docs/specs/otel/logs/) (1:x), [traces](https://opentelemetry.io/docs/specs/otel/trace/) (2:x), and [metrics](https://opentelemetry.io/docs/specs/otel/metrics/) (3:x). I've presented them as a neat series of incremental progressions, but the real history isn't so serial. Each one has evolved to serve different needs at different times. Many systems today make use of all of these generic signals, plus others that may be more specialised. Over time, those specialisations that prove more broadly valuable find their way into the general toolkit, and the list grows.
