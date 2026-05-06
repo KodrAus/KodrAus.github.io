@@ -16,14 +16,14 @@ categories: opentelemetry
 
 -----
 
-**2:1**{: class="text-weak"} Your system is organised into procedures, both logically, and mechanically. Procedures take time, and that's useful information, so you emit an event when they complete with both the time they started, and the time they ended. That span of time lets you calculate how long they took.
+**2:1**{: class="text-weak"} Your system is organised into procedures, both logically, and mechanically. Procedures take time, and that's useful information, so you emit an event when they complete with both the time they started, and the time they ended. That lets you calculate how long they took.
 
 ![Three span events in a stream showing their timestamp, status, and duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-spans-light.svg){: class="light-only"}
 ![Three span events in a stream showing their timestamp, status, and duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-spans-dark.svg){: class="dark-only"}
 
 -----
 
-**2:2**{: class="text-weak"} You want to correlate events emitted by the same procedure, so you add a [shared identifier](https://opentelemetry.io/docs/concepts/context-propagation/) to them. Each invocation of a procedure is assigned a unique identifier. Procedures call eachother, so you organise their identifiers into a hierarchy. The caller becomes the parent, and callees become the children.
+**2:2**{: class="text-weak"} You want to correlate events emitted by the same procedure, so you add a [shared identifier](https://opentelemetry.io/docs/concepts/context-propagation/) to them. Procedures call eachother, so you organise their identifiers into a hierarchy. The caller becomes the parent, and callees become the children.
 
 ![A trace of eight spans arranged in a tree showing their span ids and relative duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-light.svg){: class="light-only"}
 ![A trace of eight spans arranged in a tree showing their span ids and relative duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-dark.svg){: class="dark-only"}
@@ -34,7 +34,7 @@ categories: opentelemetry
 
 -----
 
-**2:4**{: class="text-weak"} Tracing procedures is expensive, both in production, and in retention. Instead of recording a trace for every procedure call, you retain a subset that sufficiently represents the whole. You [decide to trace a procedure](https://opentelemetry.io/docs/concepts/sampling/) upfront before its outer-most call, or you defer the decision to some later point when events from the trace are available. The decision to record a trace for a procedure is independent from the decision to retain other events they produce.
+**2:4**{: class="text-weak"} Tracing procedures is expensive, both in production, and in retention. Instead of recording a trace for every one, you retain a subset that sufficiently represents the whole. You [decide to trace a procedure](https://opentelemetry.io/docs/concepts/sampling/) upfront before its outer-most call, or you defer the decision to some later point when events from the trace are available. You still retain other events emitted by procedures even if their traces are not recorded.
 
 -----
 
