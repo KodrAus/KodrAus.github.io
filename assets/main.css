@@ -124,7 +124,10 @@ figure>img {
   display:block
 }
 figcaption {
-  font-size:15.75px
+  font-size:15.75px;
+  padding-left:30px;
+  padding-right:30px;
+  color:var(--text-weak)
 }
 ul,
 ol {
