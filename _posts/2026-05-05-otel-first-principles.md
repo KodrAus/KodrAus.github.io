@@ -34,7 +34,7 @@ categories: opentelemetry
 <figure>
   <img class="light-only" src="https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-light.svg" alt="A trace of eight spans arranged in a tree showing their span ids and relative duration"/>
   <img class="dark-only" src="https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-dark.svg" alt="A trace of eight spans arranged in a tree showing their span ids and relative duration"/>
-  <figcaption>Using hierarchical identiiers lets us visualise traces as a tree of who-called-who. The timespans on events show the relative cost of each call, and how they parallelise.</figcaption>
+  <figcaption>Using hierarchical identifiers lets us visualise traces as a tree of who-called-who. The timespans on events show the relative cost of each call, and how they parallelise.</figcaption>
 </figure>
 
 -----
