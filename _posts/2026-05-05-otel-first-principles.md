@@ -14,6 +14,9 @@ categories: opentelemetry
 
 **2:1**{: class="text-weak"} Your system is organised into procedures, both logically, and mechanically. Procedures take time, and that's useful information, so you emit an event when they complete with both the time they started, and the time they ended. That span of time lets you calculate how long they took.
 
+![Three span events in a stream showing their timestamp, status, and duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-spans-light.svg){: class="light-only"}
+![Three span events in a stream showing their timestamp, status, and duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-spans-dark.svg){: class="dark-only"}
+
 **2:2**{: class="text-weak"} You want to correlate events emitted by the same procedure, so you add a [shared identifier](https://opentelemetry.io/docs/concepts/context-propagation/) to them. Each invocation of a procedure is assigned a unique identifier. Procedures call eachother, so you organise their identifiers into a hierarchy. The caller becomes the parent, and callees become the children.
 
 ![A trace of eight spans arranged in a tree showing their span ids and relative duration](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-light.svg){: class="light-only"}
@@ -29,6 +32,9 @@ categories: opentelemetry
 ![A line chart showing the mean, min, and max together](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-chart-dark.svg){: class="dark-only"}
 
 **3:2**{: class="text-weak"} When events are high volume, or you're particularly interested in their frequency, you count their occurrence instead of emitting them directly. You sample the count at regular intervals, and emit that value as an event.
+
+![A bar chart showing the count](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-count-light.svg){: class="light-only"}
+![A bar chart showing the count](https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-count-dark.svg){: class="dark-only"}
 
 **3:3**{: class="text-weak"} When sampling procedures that take time, you don't just want to know how many calls were made, you also want to know how long they took. You [divide the total count into buckets](https://en.wikipedia.org/wiki/Heat_map) by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
 
