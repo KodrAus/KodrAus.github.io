@@ -34,7 +34,7 @@ categories: opentelemetry
 <figure>
   <img class="light-only" src="https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-light.svg" alt="A trace of eight spans arranged in a tree showing their span ids and relative duration"/>
   <img class="dark-only" src="https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-trace-dark.svg" alt="A trace of eight spans arranged in a tree showing their span ids and relative duration"/>
-  <figcaption>Using hierarchical identifiers lets us visualise traces as a tree of who-called-who. The timespans on events show the relative cost of each call, and how they parallelise.</figcaption>
+  <figcaption>Using hierarchical identifiers lets us visualise procedures as a tree of who-called-who. The timespans on events show the relative cost of each call, and how they parallelise.</figcaption>
 </figure>
 
 -----
@@ -43,7 +43,7 @@ categories: opentelemetry
 
 -----
 
-**2:4**{: class="text-weak"} Tracing procedures is expensive, both in production, and in retention. Instead of recording a trace for every one, you retain a subset that sufficiently represents the whole. You [decide to trace a procedure](https://opentelemetry.io/docs/concepts/sampling/) upfront before its outer-most call, or you defer the decision to some later point when events from the trace are available. You still retain other events emitted by procedures even if their traces are not recorded.
+**2:4**{: class="text-weak"} Events are normally independent, but hierarchical identifiers make events from procedure calls dependent on eachother. You have to retain all of them, or none of them. You [make this decision](https://opentelemetry.io/docs/concepts/sampling/) upfront before the outer-most procedure call, or you defer the decision to some later point when the events are available. Other independent events emitted by procedures are retained even if the call events themselves are not.
 
 -----
 
