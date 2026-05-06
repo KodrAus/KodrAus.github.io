@@ -73,7 +73,7 @@ categories: opentelemetry
 <figure>
   <img class="light-only" src="https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-heatmap-light.svg" alt="A bar chart showing the count"/>
   <img class="dark-only" src="https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-heatmap-dark.svg" alt="A bar chart showing the count"/>
-  <figcaption>Adding an extra dimension to a bar chart can turn it into a heatmap. In this chart, the x-axis is time, the y-axis is the span duration, and the z-axis (shading intensity) is the count of spans in that bucket. More prominently shaded regions correspond to higher counts, meaning more spans completed in around that duration, at around that time.</figcaption>
+  <figcaption>Adding an extra dimension to a bar chart can turn it into a heatmap. In this chart, the x-axis is time, the y-axis is the span duration, and the z-axis (shading intensity) is the count of spans in that bucket. More prominently shaded regions correspond to higher counts, meaning more spans completed in about that duration, at about that time.</figcaption>
 </figure>
 
 -----
