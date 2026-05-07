@@ -68,7 +68,7 @@ categories: opentelemetry
 
 -----
 
-**3:3**{: class="text-weak"} When sampling procedures that take time, you don't just want to know how many calls were made, you also want to know how long they took. You [divide the total count into buckets](https://en.wikipedia.org/wiki/Heat_map) by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
+**3:3**{: class="text-weak"} When sampling procedures that take time, you don't just want to know how many calls were made, you also want to know how long they took. You construct a [histogram](https://en.wikipedia.org/wiki/Histogram) by dividing the total count into buckets by duration, with procedures taking about the same time sharing the same bucket. Bucket granularity trades volume for resolution.
 
 <figure>
   <img class="light-only" src="https://raw.githubusercontent.com/KodrAus/KodrAus.github.io/refs/heads/master/assets/2026-05-05-otel-first-principles-heatmap-light.svg" alt="A bar chart showing the count"/>
