@@ -3,6 +3,7 @@ layout: post
 title: "47 seconds of fuzzing in CI"
 date: 2026-06-09 09:00:00 +1000
 categories: rust
+---
 
 Anytime I fuzz a piece of code for the first time I'm always surprised by how trivially broken it is. The first fuzzing run always finds bugs within a few seconds of starting. Maybe I'm just bad at programming, but I suspect that experience is common. In case you're not familiar, fuzzing is a testing technique where your program is fed (purposefully) random inputs. The goal is to remove our own biases in deciding what to test and automatically exercise all possible paths through our program. It's especially good for programs that start from unstructured input, like parsers.
 
